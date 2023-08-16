@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import "./App.css";
-import InputPins from "./components/InputPins";
-import Frame from "./components/frame";
+import InputPins from "./components/tsx components/InputPins";
+import Frame from "./components/tsx components/frame";
 
-function totalScore(arr) {
+function totalScore(arr: number[]) {
   let clonedScoreArray = [...arr];
-  let finalArr = [];
+  let finalArr: number[] = [];
 
   for (let i = 0; i < clonedScoreArray.length; i++) {
     let isFirstThrow = finalArr.length !== 0 ? finalArr.length : 0;
@@ -58,9 +58,9 @@ function totalScore(arr) {
 }
 
 function App() {
-  const [scoreArray, setScoreArray] = React.useState([]);
+  const [scoreArray, setScoreArray] = React.useState<number[]>([]);
 
-  const calculatedScores = totalScore(scoreArray);
+  const calculatedScores: number[] = totalScore(scoreArray);
 
   function resetFunction() {
     setScoreArray([]);
@@ -68,21 +68,11 @@ function App() {
 
   return (
     <Extruture>
-      <h1>Bowling ScoreBoard</h1>
+      <Titulo>Bowling Score Board</Titulo>
       <button onClick={resetFunction}>Reset Game</button>
-      <InputPins
-        scoreArray={scoreArray}
-        setScoreArray={setScoreArray}
-        totalScore={totalScore}
-      />
+      <InputPins scoreArray={scoreArray} setScoreArray={setScoreArray} />
       {Array.from({ length: 10 }).map((_, index) => (
-        <Frame
-          key={index}
-          index={index}
-          scoreArray={scoreArray}
-          setScoreArray={setScoreArray}
-          calculatedScores={calculatedScores}
-        >
+        <Frame key={index} index={index} scoreArray={scoreArray}>
           {calculatedScores[index] && calculatedScores[index]}
         </Frame>
       ))}
@@ -94,6 +84,10 @@ const Extruture = styled.div`
   width: 100%;
   height: 100%;
   text-align: center;
+`;
+
+const Titulo = styled.h1`
+  text-shadow: 0.1em 0.1em white;
 `;
 
 export default App;
