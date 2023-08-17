@@ -87,6 +87,7 @@ const Extruture = styled.div`
 `;
 
 const Titulo = styled.h1`
+  color: black;
   text-shadow: 0.1em 0.1em white;
 `;
 

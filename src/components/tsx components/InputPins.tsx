@@ -28,11 +28,9 @@ export default function InputPins({
       }
 
       if (scoreArray.length % 2 === 0 && pinos === 10) {
-        let currentArray = [...scoreArray, pinos, 0];
-        setScoreArray(currentArray);
+        setScoreArray((prevPlays) => [...prevPlays, pinos, 0]);
       } else {
-        let currentArray = [...scoreArray, pinos];
-        setScoreArray(currentArray);
+        setScoreArray((prevPlays) => [...prevPlays, pinos]);
       }
 
       setInputSubmit("");
